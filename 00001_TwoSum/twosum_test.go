@@ -104,3 +104,34 @@ func BenchmarkTwoSum1(b *testing.B) {
 		twoSum1(nums, target)
 	}
 }
+
+func TestTwoSum2(t *testing.T) {
+	var cases = []struct {
+		name   string
+		nums   []int
+		target int
+		expect []int
+	}{
+		{"case1", []int{2, 7, 11, 15}, 9, []int{0, 1}},
+		{"case2", []int{3, 2, 4}, 6, []int{1, 2}},
+		{"case3", []int{3, 3}, 6, []int{0, 1}},
+	}
+
+	for _, tt := range cases {
+		t.Run(tt.name, func(t *testing.T) {
+			ret := twoSum2(tt.nums, tt.target)
+			if !isArrSame(ret, tt.expect) {
+				t.Errorf("nums:%v target:%d expect:%v get:%v", tt.nums, tt.target, tt.expect, ret)
+			}
+		})
+
+	}
+}
+
+func BenchmarkTwoSum2(b *testing.B) {
+	nums := []int{3, 3}
+	target := 6
+	for i := 0; i < b.N; i++ {
+		twoSum2(nums, target)
+	}
+}

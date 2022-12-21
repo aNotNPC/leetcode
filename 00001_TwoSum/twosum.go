@@ -41,3 +41,15 @@ func twoSum1(nums []int, target int) []int {
 	}
 	return nil
 }
+
+func twoSum2(nums []int, target int) []int {
+	m := make(map[int]int, 1)
+	for i, num := range nums {
+		if j, ok := m[target-num]; ok {
+			return []int{j, i}
+		}
+
+		m[num] = i
+	}
+	return nil
+}
