@@ -18,3 +18,15 @@ func removeDuplicates(nums []int) int {
 	}
 	return k
 }
+
+func removeDuplicates1(nums []int) int {
+	j := 0
+	count := len(nums)
+	for i := 1; i < count; i++ {
+		if nums[j] != nums[i] {
+			j++
+			nums[j] = nums[i]
+		}
+	}
+	return j + 1
+}
