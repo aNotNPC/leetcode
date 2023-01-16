@@ -27,3 +27,26 @@ func removeElement(nums []int, val int) int {
 	}
 	return k
 }
+
+// 2 2 3 3， 3
+// 3， 3
+// , 3
+// 0,1,2,2,3,0,4,2, 2
+
+/*
+执行用时： 0 ms , 在所有 Go 提交中击败了 100.00% 的用户
+内存消耗： 2 MB , 在所有 Go 提交中击败了 7.72% 的用户
+通过测试用例： 113 / 113
+*/
+func removeElement1(nums []int, val int) int {
+	count := len(nums)
+	newCount := 0
+
+	for i := 0; i < count; i++ {
+		if nums[i] != val {
+			nums[newCount] = nums[i]
+			newCount++
+		}
+	}
+	return newCount
+}
